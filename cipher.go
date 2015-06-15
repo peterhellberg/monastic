@@ -1,3 +1,43 @@
+/*
+
+Package monastic is an implementation of The Ciphers of the Monks
+
+The cipher is described on http://www.davidaking.org/Ciphers.htm
+
+Installation
+
+Just go get the package:
+
+    go get -u github.com/peterhellberg/monastic
+
+Usage
+
+A small usage example
+
+		package main
+
+		import (
+			"fmt"
+
+			"github.com/peterhellberg/monastic"
+		)
+
+		func main() {
+			if c, err := monastic.Cipher(4444); err == nil {
+				fmt.Println(c)
+			}
+
+			// Output:
+			// *  *  *
+			//  * * *
+			//   ***
+			//    *
+			//   ***
+			//  * * *
+			// *  *  *
+		}
+
+*/
 package monastic
 
 import "errors"
