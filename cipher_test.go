@@ -4,9 +4,10 @@ import "testing"
 
 func TestCipher(t *testing.T) {
 	for _, tt := range []struct {
-		n   uint
+		n   int
 		err error
 	}{
+		{-1, ErrValueTooSmall},
 		{0, ErrValueTooSmall},
 		{1, nil},
 		{9, nil},
@@ -21,7 +22,7 @@ func TestCipher(t *testing.T) {
 
 func TestParts(t *testing.T) {
 	for _, tt := range []struct {
-		n uint
+		n int
 		p []uint
 	}{
 		{1, []uint{1}},
@@ -44,7 +45,7 @@ func TestParts(t *testing.T) {
 
 func TestString(t *testing.T) {
 	for _, tt := range []struct {
-		n uint
+		n int
 		s string
 	}{
 		{1, "   ****\n   *   \n   *   \n   *   \n   *   \n   *   \n   *   \n"},

@@ -9,7 +9,7 @@ var (
 	ErrValueTooSmall = errors.New("value below 1, not supported by cipher")
 )
 
-func Cipher(n uint) (cipher, error) {
+func Cipher(n int) (cipher, error) {
 	switch {
 	case n < 1:
 		return cipher(0), ErrValueTooSmall
