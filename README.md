@@ -6,11 +6,13 @@
 
 Implementation of [The Ciphers of the Monks](https://en.wikipedia.org/wiki/The_Ciphers_of_the_Monks) in Go
 
-[![Ciphers](http://www.davidaking.org/Photos/Ciphers_clip_image002.jpg)](http://www.davidaking.org/Ciphers.htm)
-
 ## Installation
 
     go get -u github.com/peterhellberg/monastic
+
+If you want to install the command line application:
+
+    go get -u github.com/peterhellberg/monastic/cmd/monastic
 
 ## Usage
 
@@ -38,6 +40,8 @@ func main() {
 	// *  *  *
 }
 ```
+
+[![Ciphers](http://www.davidaking.org/Photos/Ciphers_clip_image002.jpg)](http://www.davidaking.org/Ciphers.htm)
 
 ## License (MIT)
 
