@@ -2,7 +2,7 @@ package monastic
 
 import "testing"
 
-func TestCipher(t *testing.T) {
+func TestNewCipher(t *testing.T) {
 	for _, tt := range []struct {
 		n   int
 		err error
@@ -14,7 +14,7 @@ func TestCipher(t *testing.T) {
 		{9999, nil},
 		{10000, ErrValueTooLarge},
 	} {
-		if _, err := Cipher(tt.n); err != tt.err {
+		if _, err := NewCipher(tt.n); err != tt.err {
 			t.Fatalf("unexpected error: %s", err)
 		}
 	}
@@ -32,12 +32,7 @@ func TestParts(t *testing.T) {
 		{4567, []uint{4000, 500, 60, 7}},
 		{9999, []uint{9000, 900, 90, 9}},
 	} {
-		c, err := Cipher(tt.n)
-		if err != nil {
-			t.Fatalf("unexpected error: %s", err)
-		}
-
-		if got := c.Parts(); !equalUints(got, tt.p) {
+		if got := Cipher(tt.n).Parts(); !equalUints(got, tt.p) {
 			t.Fatalf("unexpected parts: %v, want %v", got, tt.p)
 		}
 	}
@@ -109,12 +104,7 @@ func TestString(t *testing.T) {
 		{7085, "*  ****\n*  * * \n*****  \n   *   \n*  *   \n*  *   \n****   \n"},
 		{9433, "   *   \n  ***  \n * * * \n*  *  *\n*****  \n*  * * \n****  *\n"},
 	} {
-		c, err := Cipher(tt.n)
-		if err != nil {
-			t.Fatalf("unexpected error: %s", err)
-		}
-
-		if got := c.String(); got != tt.s {
+		if got := Cipher(tt.n).String(); got != tt.s {
 			t.Fatalf("\n\ngot string for %d:\n\n%s\nwant:\n\n%v", tt.n, got, tt.s)
 		}
 	}

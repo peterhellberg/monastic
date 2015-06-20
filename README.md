@@ -26,7 +26,7 @@ import (
 )
 
 func main() {
-	if c, err := monastic.Cipher(4444); err == nil {
+	if c, err := monastic.NewCipher(4444); err == nil {
 		fmt.Println(c)
 	}
 

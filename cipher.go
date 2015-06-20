@@ -23,7 +23,7 @@ A small usage example
 		)
 
 		func main() {
-			if c, err := monastic.Cipher(4444); err == nil {
+			if c, err := monastic.NewCipher(4444); err == nil {
 				fmt.Println(c)
 			}
 
@@ -42,25 +42,31 @@ package monastic
 
 import "errors"
 
-type cipher uint
+// Cipher of the Monks
+type Cipher uint
 
 var (
+	// ErrValueTooLarge is returned if the value is above 9999
 	ErrValueTooLarge = errors.New("value above 9999, not supported by cipher")
+
+	// ErrValueTooSmall is returned if the value is below 1
 	ErrValueTooSmall = errors.New("value below 1, not supported by cipher")
 )
 
-func Cipher(n int) (cipher, error) {
+// NewCipher returns a valid Cipher unless value is out of bounds.
+func NewCipher(n int) (Cipher, error) {
 	switch {
 	case n < 1:
-		return cipher(0), ErrValueTooSmall
+		return Cipher(0), ErrValueTooSmall
 	case n > 9999:
-		return cipher(0), ErrValueTooLarge
+		return Cipher(0), ErrValueTooLarge
 	}
 
-	return cipher(n), nil
+	return Cipher(n), nil
 }
 
-func (c cipher) Parts() []uint {
+// Parts return the parts used by the cipher
+func (c Cipher) Parts() []uint {
 	n := uint(c)
 	p := []uint{}
 
@@ -83,7 +89,8 @@ func (c cipher) Parts() []uint {
 	return p
 }
 
-func (c cipher) Pattern() [][]uint {
+// Pattern returns the pattern used to draw the cipher
+func (c Cipher) Pattern() [][]uint {
 	pattern := [][]uint{
 		{0, 0, 0, 0, 0, 0, 0},
 		{0, 0, 0, 0, 0, 0, 0},
@@ -109,7 +116,8 @@ func (c cipher) Pattern() [][]uint {
 	return pattern
 }
 
-func (c cipher) String() string {
+// String returns the string representation of the cipher value
+func (c Cipher) String() string {
 	var s string
 
 	for _, row := range c.Pattern() {
