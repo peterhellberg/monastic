@@ -26,7 +26,8 @@ import (
 )
 
 func main() {
-	if c, err := monastic.NewCipher(4444); err == nil {
+	c, err := monastic.NewCipher(4444)
+	if err == nil {
 		fmt.Println(c)
 	}
 
@@ -38,6 +39,14 @@ func main() {
 	//   ***
 	//  * * *
 	// *  *  *
+
+	p, err := monastic.Parse(c.String())
+	if err == nil {
+		fmt.Printf("Number %d with parts %+v\n", p, p.Parts())
+	}
+
+	// Output:
+	// Number 4444 with parts [4000 400 40 4]
 }
 ```
 
@@ -45,7 +54,7 @@ func main() {
 
 ## License (MIT)
 
-Copyright (c) 2015 [Peter Hellberg](http://c7.se/)
+Copyright (c) 2015-2016 [Peter Hellberg](http://c7.se/)
 
 > Permission is hereby granted, free of charge, to any person obtaining
 > a copy of this software and associated documentation files (the
