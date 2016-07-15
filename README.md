@@ -50,7 +50,7 @@ func main() {
 }
 ```
 
-[![Ciphers](http://www.davidaking.org/Photos/Ciphers_clip_image002.jpg)](http://www.davidaking.org/Ciphers.htm)
+[![Ciphers](http://assets.c7.se/skitch/monastic-20160715-144242.png)](http://www.davidaking.org/Ciphers.htm)
 
 ## License (MIT)
 
