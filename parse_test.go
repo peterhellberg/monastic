@@ -13,6 +13,10 @@ func TestParse(t *testing.T) {
 		if int(got) != tt.n {
 			t.Fatalf(`[%d] Parse(s) = %d, want %d`, i, got, tt.n)
 		}
+
+		if got.String() != tt.s {
+			t.Fatalf(`[%d] got.String() != %q`, tt.s)
+		}
 	}
 }
 
@@ -27,6 +31,10 @@ func TestAllNumbers(t *testing.T) {
 
 		if int(got) != n {
 			t.Fatalf("Parse(Cipher(%d).String()) = %d, want %d", n, got, n)
+		}
+
+		if got.String() != s {
+			t.Fatalf(`got.String() != %q`, s)
 		}
 	}
 }
