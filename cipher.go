@@ -51,6 +51,9 @@ var (
 
 	// ErrValueTooSmall is returned if the value is below 1
 	ErrValueTooSmall = errors.New("value below 1, not supported by cipher")
+
+	// ErrInvalidInputString is returned if len(s) != 56
+	ErrInvalidInputString = errors.New("invalid input string")
 )
 
 // NewCipher returns a valid Cipher unless value is out of bounds.
